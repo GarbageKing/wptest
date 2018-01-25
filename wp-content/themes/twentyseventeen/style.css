@@ -4305,3 +4305,34 @@ p > object:only-child {
 		padding: 0;
 	}
 }
+
+/*nav styles*/
+#menu-top>.menu-item
+{
+	position: relative;
+	display: inline-block;
+	background-color: #4CAF50;    
+	padding: 16px;
+}
+
+#menu-top .menu-item .sub-menu
+{
+	position: absolute;
+	min-width: 200px;
+	border: 1px solid #000;
+	margin-left: -16px;
+	margin-top: 16px;
+	display: none;
+}
+
+#menu-top .menu-item:hover .sub-menu
+{	
+	display: block;
+}
+
+.sub-menu .menu-item
+{	
+	display: block;
+	border-bottom: 1px solid #b1acac;
+}
+

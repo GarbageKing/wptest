@@ -584,3 +584,68 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
+
+
+// wp_nav_menu()
+    add_action( 'init', 'register_navmenus' );
+    function register_navmenus() {
+        register_nav_menus( array(
+            'Top'       => __( 'Top Navigation' ),            
+            )
+        );		
+		 
+
+        // Check if Top menu exists and make it if not
+        if ( !is_nav_menu( 'Top' )) {        
+			$menu_id = wp_create_nav_menu( 'Top' );
+            wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('Home'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish'));
+        	$business_parent_item = wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('Our Business'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish'));
+			$about_parent_item = wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('About'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish'));
+			wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('Contact Us'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish'));
+			//biz subs
+			wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('First Submenu'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish',
+				'menu-item-parent-id' => $business_parent_item));
+			wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('Second Submenu'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish',
+				'menu-item-parent-id' => $business_parent_item));
+			wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('Third Submenu'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish',
+				'menu-item-parent-id' => $business_parent_item));
+			//about subs
+			wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('Our Company'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish',
+				'menu-item-parent-id' => $about_parent_item));
+			wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('What we do'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish',
+				'menu-item-parent-id' => $about_parent_item));
+			wp_update_nav_menu_item($menu_id, 0, array(
+        		'menu-item-title' =>  __('Our team'),       			
+        		'menu-item-url' => home_url( '/' ), 
+        		'menu-item-status' => 'publish',
+				'menu-item-parent-id' => $about_parent_item));
+			}
+        
+    }

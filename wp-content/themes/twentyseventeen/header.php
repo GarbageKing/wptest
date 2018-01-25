@@ -37,9 +37,8 @@
 				</div><!-- .wrap -->
 			</div><!-- .navigation-top -->
 		<?php endif; ?>
-
-	</header><!-- #masthead -->
-
+	</header><!-- #masthead -->	
+	
 	<?php
 
 	/*
@@ -54,4 +53,7 @@
 	?>
 
 	<div class="site-content-contain">
+		<div id="te_menu">
+			<?php wp_nav_menu( array('menu' => 'Top' )); ?>
+		</div>
 		<div id="content" class="site-content">
